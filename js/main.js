@@ -13,3 +13,24 @@ targets.forEach(element => {
     target.style.display= 'flex'
   })
 })
+
+/* Image format detection and background image setting */
+
+window.addEventListener('load', () => {
+  const img = document.querySelector('#background-image-support img');
+  let imageUrl;
+
+  switch (img.currentSrc.split('.').pop()) {
+    case 'webp':
+      imageUrl = '../img/wallpaper.webp';
+      break;
+    case 'jpg':
+      imageUrl = '../img/wallpaper.jpg';
+      break;
+    default:
+      imageUrl = '../img/wallpaper.webp';
+      break;
+  }
+
+  document.documentElement.style.setProperty('--background_image', `url("${imageUrl}")`);
+});
